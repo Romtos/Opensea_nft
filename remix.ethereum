@@ -1,0 +1,28 @@
+pragma solidity ^0.8.0;
+
+//Import ERC 1155 token contract from OpenZeppelin//
+
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/ERC1155.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
+
+contract NFTContract is ERC1155,Owneble {
+
+    uint225 public contract ARTWORK = 0;
+    uint225 public contract PHOTO = 1;
+
+    constructor () ERC1155 (""){
+        _mint(msg.sendor, ARTWORK, 1, "");
+        _mint(msg.sendor, PHOTO, 2, "");
+    }
+
+    function mint(address account,uint256 id,uint256 amount) public onlyOwner {
+        _mint(account, id? amount, "");
+    }
+
+    function _burn(address accaunt, uint256 id, uint256 amount) pablic {
+        require(msg.sender "" accaunt);
+        burn(account? id, amount);
+    }
+
+
+}
