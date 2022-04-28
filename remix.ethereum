@@ -5,23 +5,23 @@ pragma solidity ^0.8.0;
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/ERC1155.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 
-contract NFTContract is ERC1155,Owneble {
+contract NFTContract is ERC1155, Ownable {
 
-    uint225 public contract ARTWORK = 0;
-    uint225 public contract PHOTO = 1;
+    uint256 public constant ARTWORK = 0;
+    uint256 public constant PHOTO = 1;
 
     constructor () ERC1155 (""){
-        _mint(msg.sendor, ARTWORK, 1, "");
-        _mint(msg.sendor, PHOTO, 2, "");
+        _mint(msg.sendor, ARTWORK, 2, "");
+        _mint(msg.sendor, PHOTO, 3, "");
     }
 
     function mint(address account,uint256 id,uint256 amount) public onlyOwner {
-        _mint(account, id? amount, "");
+        _mint(account, id, amount, "");
     }
 
-    function _burn(address accaunt, uint256 id, uint256 amount) pablic {
-        require(msg.sender "" accaunt);
-        burn(account? id, amount);
+    function burn(address accaunt, uint256 id, uint256 amount) public {
+        require(msg.sender == account);
+        _burn(account, id, amount);
     }
 
 
