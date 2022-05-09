@@ -1,18 +1,22 @@
-pragma solidity ^0.8.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0; 
+contract TestContract {
+// Some logic
+}
 
 //Import ERC 1155 token contract from OpenZeppelin//
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/ERC1155.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 
-constant NFTContract is ERC1155, Ownable {
+contract NFTContract is ERC1155, Ownable {
 
-    uint256 public constant picture1 = 0;
-    uint256 public constant picture2 = 1;
+    uint256 public constant APICTURE1 = 0;
+    uint256 public constant PICTURE2 = 1;
 
     constructor() ERC1155 ("https://fmsamz8ufy99.usemoralis.com/{id}.json") {
-        _mint(msg.sender, picture1, 1, "");
-        _mint(msg.sender, picture2, 2, "");
+        _mint(msg.sender, APICTURE1, 1, "");
+        _mint(msg.sender, PICTURE2, 2, "");
     }
 
     function mint(address account,uint256 id,uint256 amount) public onlyOwner {
